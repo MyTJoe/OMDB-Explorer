@@ -6,6 +6,35 @@
 </head>
 <body>
     <h1>Cinema Explorer</h1>
+    <form action="/search" method="get">
+        <center>Enter the Name of the Movie: <input type="text" name="keyword"></center></br>
+        <center><input type="submit" value="Submit"></center></br>
+    </form>
+
+{{#results}}
+{{title}}
+{{year}}
+{{rated}}
+{{released}}
+{{runtime}}
+{{genre}}
+{{director}}
+{{writer}}
+{{actors}}
+{{plot}}
+{{language}}
+{{country}}
+{{awards}}
+{{poster}}
+{{metaScore}}
+{{imdbRating}}
+{{imdbVotes}}
+{{imdbID}}
+{{type}}
+{{boxOffice}}
+{{production}}
+{{website}}
+{{/results}}
 
 </body>
 </html>

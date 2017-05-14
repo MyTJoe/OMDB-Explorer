@@ -23,7 +23,7 @@ public class Movie {
     private String boxOffice;
     private String production;
     private String website;
-    private String respone; // could make this boolean
+    private String response; // could make this boolean
 
     public Movie() {
     }
@@ -205,10 +205,10 @@ public class Movie {
     }
 
     public String getRespone() {
-        return respone;
+        return response;
     }
 
     public void setRespone(String respone) {
-        this.respone = respone;
+        this.response = respone;
     }
 }

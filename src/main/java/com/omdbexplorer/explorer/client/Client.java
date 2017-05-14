@@ -4,23 +4,25 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.omdbexplorer.explorer.data.Movie;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by joe on 5/12/17.
- */
 public class Client {
 
-    private String url = "http://www.omdbapi.com/?t=tombstone";
+    private String url = "http://www.omdbapi.com/?t=";
+
+    UriComponents uriComponentsBuilder = UriComponentsBuilder.newInstance()
+            .scheme("http").host("www.omdbapi.com").path("/").query("t=tombstone").build();
 
     // Build url from user input
-    public List<Movie> getData() {
-
+    public List<Movie> getData(String keyword) {
+        System.out.println(keyword);
         List<Movie> results = new ArrayList<>();
         RestTemplate restTemplate = new RestTemplate();
-        String movie = restTemplate.getForObject(url, String.class);
+        String movie = restTemplate.getForObject(url+=keyword, String.class);
         ObjectMapper mapper = new ObjectMapper();
 
         try {

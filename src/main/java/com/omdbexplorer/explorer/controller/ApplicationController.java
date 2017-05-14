@@ -5,6 +5,7 @@ import com.omdbexplorer.explorer.client.Client;
 import com.omdbexplorer.explorer.data.Movie;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 @Controller
@@ -19,8 +20,10 @@ public class ApplicationController {
     @CrossOrigin
     @ResponseBody
     @RequestMapping(path = "/search", method = RequestMethod.GET)
-    public List<Movie> movieInfo() {
-        List<Movie> results = new Client().getData();
-        return results;
+    public ModelAndView movieInfo(String keyword) {
+        ModelAndView view = new ModelAndView("index");
+        List<Movie> results = new Client().getData(keyword);
+        view.addObject("results",results);
+        return view;
     }
 }
