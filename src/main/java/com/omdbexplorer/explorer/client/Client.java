@@ -82,7 +82,7 @@ public class Client {
             movieInfo.setBoxOffice(boxOffice);
             movieInfo.setProduction(production);
             movieInfo.setWebsite(website);
-            movieInfo.setRespone(response);
+            movieInfo.setResponse(response);
 
             results.add(movieInfo);
 

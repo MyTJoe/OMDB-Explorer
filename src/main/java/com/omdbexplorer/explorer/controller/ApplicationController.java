@@ -22,8 +22,16 @@ public class ApplicationController {
     @RequestMapping(path = "/search", method = RequestMethod.GET)
     public ModelAndView movieInfo(String keyword) {
         ModelAndView view = new ModelAndView("index");
+        if (keyword.length() == 0){
+            return view.addObject("error", "Please enter a title");
+        }
         List<Movie> results = new Client().getData(keyword);
-        view.addObject("results",results);
+        if (results.size() == 0) {
+            view.addObject("error", "Sorry, there were no results for "
+                    + keyword + ".Please try again.");
+        } else{
+            view.addObject("results", results);
+        }
         return view;
     }
 }

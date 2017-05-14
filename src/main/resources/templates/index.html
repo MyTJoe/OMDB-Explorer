@@ -7,7 +7,7 @@
 <body>
     <h1>Cinema Explorer</h1>
     <form action="/search" method="get">
-        <center>Enter the Name of the Movie: <input type="text" name="keyword"></center></br>
+        <center>Enter the Name of the Movie: </br><input type="text" name="keyword"></center></br>
         <center><input type="submit" value="Submit"></center></br>
     </form>
 
@@ -36,5 +36,8 @@
 {{website}}
 {{/results}}
 
+{{#error}}
+    {{error}}
+{{/error}}
 </body>
 </html>

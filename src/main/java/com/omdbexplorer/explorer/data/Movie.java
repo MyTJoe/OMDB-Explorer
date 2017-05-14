@@ -19,11 +19,11 @@ public class Movie {
     private String imdbRating;
     private String imdbVotes;
     private String imdbID;
-    private String type; // could make this enum
+    private String type;
     private String boxOffice;
     private String production;
     private String website;
-    private String response; // could make this boolean
+    private String response;
 
     public Movie() {
     }
@@ -204,11 +204,11 @@ public class Movie {
         this.website = website;
     }
 
-    public String getRespone() {
+    public String getResponse() {
         return response;
     }
 
-    public void setRespone(String respone) {
-        this.response = respone;
+    public void setResponse(String response) {
+        this.response = response;
     }
 }
