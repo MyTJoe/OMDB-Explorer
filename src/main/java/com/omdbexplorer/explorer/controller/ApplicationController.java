@@ -20,7 +20,7 @@ public class ApplicationController {
     @CrossOrigin
     @ResponseBody
     @RequestMapping(path = "/search", method = RequestMethod.GET)
-    public ModelAndView movieInfo(String keyword) {
+    public ModelAndView movie(String keyword) {
         ModelAndView view = new ModelAndView("index");
         if (keyword.length() == 0){
             return view.addObject("error", "Please enter a title");
