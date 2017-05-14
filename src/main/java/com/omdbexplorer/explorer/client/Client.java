@@ -4,9 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.omdbexplorer.explorer.data.Movie;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,49 +13,45 @@ public class Client {
 
     private String url = "http://www.omdbapi.com/?t=";
 
-    UriComponents uriComponentsBuilder = UriComponentsBuilder.newInstance()
-            .scheme("http").host("www.omdbapi.com").path("/").query("t=tombstone").build();
-
     // Build url from user input
+    // Return a list of Movie objects as strings
     public List<Movie> getData(String keyword) {
-        System.out.println(keyword);
         List<Movie> results = new ArrayList<>();
         RestTemplate restTemplate = new RestTemplate();
-        String movie = restTemplate.getForObject(url+=keyword, String.class);
         ObjectMapper mapper = new ObjectMapper();
 
         try {
+            String movie = restTemplate.getForObject(url+= URLEncoder.encode(keyword, "UTF-8"), String.class);
             JsonNode node = mapper.readTree(movie);
 
-            // Need solution for someone entering a movie that isn't in the database or doesn't exist.
-            // Also need a solution for episodes and series?
-            // Null pointer exception if user enters a title that doesn't exist. Need work around.
-            // Need solution for empty title as well.
+            // Return an empty list if there is an error with the search
+            String response = getText(node, "Response");
+            if (response.equalsIgnoreCase("false")) {
+                return results;
+            }
 
-            String response = node.get("Response").asText(); // boolean
-            String title = node.get("Title").asText();
-            String year = node.get("Year").asText();
-            String rated = node.get("Rated").asText();
-            String released = node.get("Released").asText();
-            String runtime = node.get("Runtime").asText();
-            String genre = node.get("Genre").asText();
-            String director = node.get("Director").asText();
-            String writer = node.get("Writer").asText();
-            String actors = node.get("Actors").asText();
-            String plot = node.get("Plot").asText();
-            String language = node.get("Language").asText();
-            String country = node.get("Country").asText();
-            String awards = node.get("Awards").asText();
-            String poster = node.get("Poster").asText();
-            String metaScore = node.get("Metascore").asText();
-            String imdbRating = node.get("imdbRating").asText();
-            String imdbVotes = node.get("imdbVotes").asText();
-            String imdbID = node.get("imdbID").asText();
-            String type = node.get("Type").asText();
-            String boxOffice = node.get("BoxOffice").asText();
-            String production = node.get("Production").asText();
-            String website = node.get("Website").asText();
-
+            String title = getText(node, "Title");
+            String year = getText(node, "Year");
+            String rated = getText(node, "Rated");
+            String released = getText(node, "Released");
+            String runtime = getText(node, "Runtime");
+            String genre = getText(node, "Genre");
+            String director = getText(node, "Director");
+            String writer = getText(node, "Writer");
+            String actors = getText(node, "Actors");
+            String plot = getText(node, "Plot");
+            String language = getText(node, "Language");
+            String country = getText(node, "Country");
+            String awards = getText(node, "Awards");
+            String poster = getText(node, "Poster");
+            String metaScore = getText(node, "Metascore");
+            String imdbRating = getText(node, "imdbRating");
+            String imdbVotes = getText(node, "imdbVotes");
+            String imdbID = getText(node, "imdbID");
+            String type = getText(node, "Type");
+            String boxOffice = getText(node, "BoxOffice");
+            String production = getText(node, "Production");
+            String website = getText(node, "Website");
 
             Movie movieInfo = new Movie();
 
@@ -90,5 +85,12 @@ public class Client {
             e.printStackTrace();
         }
         return results;
+    }
+
+    private String getText(JsonNode node, String fieldName) {
+        if (node.get(fieldName) != null) {
+            return node.get(fieldName).asText();
+        }
+        return "";
     }
 }
