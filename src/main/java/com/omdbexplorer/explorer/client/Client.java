@@ -15,6 +15,7 @@ public class Client {
 
     private String url = "http://www.omdbapi.com/?t=tombstone";
 
+    // Build url from user input
     public List<Movie> getData() {
 
         List<Movie> results = new ArrayList<>();
@@ -27,6 +28,8 @@ public class Client {
 
             // Need solution for someone entering a movie that isn't in the database or doesn't exist.
             // Also need a solution for episodes and series?
+            // Null pointer exception if user enters a title that doesn't exist. Need work around.
+            // Need solution for empty title as well.
 
             String response = node.get("Response").asText(); // boolean
             String title = node.get("Title").asText();
