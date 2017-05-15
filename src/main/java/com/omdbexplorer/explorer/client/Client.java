@@ -69,7 +69,7 @@ public class Client {
             movieInfo.setLanguage(language);
             movieInfo.setCountry(country);
             movieInfo.setPoster(poster);
-            movieInfo.setMetaScore(metaScore);
+            movieInfo.setMetaScore(metaScore + " ,");
             movieInfo.setImdbRating(imdbRating + ", ");
             movieInfo.setImdbVotes(imdbVotes);
             movieInfo.setImdbID(imdbID);

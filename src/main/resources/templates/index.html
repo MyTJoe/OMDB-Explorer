@@ -13,7 +13,7 @@
         <input type="submit" value="Submit" size="large"></h2><br class="small"/>
 </form>
 
-<table class = center cellspacing= "5" >
+<table class=center cellspacing="5">
     {{#results}}
     <tr>
         <td>{{title}}</td>
@@ -21,43 +21,40 @@
         <td>Released {{released}}</td>
         <td>Rated {{rated}}</td>
         <td>{{runtime}}</td>
-        </tr>
+    </tr>
     {{/results}}
 </table>
 {{#results}}
+
 <center><p>{{plot}}</p></center>
 {{#poster}}<img src="{{poster}}" alt="{{poster}}" style="width:300;height:300;"/>{{/poster}}<br>
-<h2>Staring: {{actors}}</h2><br class="small"/>
-<h2>Reviews</h2>
-<table class = center cellspacing= "5">
-
+<table class=center cellspacing="5">
     <tr>
         <td></td>
-        <td>Metascore Rating: {{metaScore}}</td>
+        <td>Metascore: {{metaScore}}</td>
         <td>IMDB Rating: {{imdbRating}}</td>
         <td>IMDB Votes: {{imdbVotes}}</td>
     </tr>
-
 </table>
+<h2>Staring: {{actors}}</h2>
+<h3>
+    <ul style="list-style: none;">
+        <li>IMDB ID: {{imdbID}}</li>
+        <li>Type: {{type}}</li>
+        <li>Language(s): {{language}}</li>
+        <li>Country: {{country}}</li>
+        <li>Awards: {{awards}}</li>
+        <li>Box Office: {{boxOffice}}</li>
+        <li>Website: {{website}}</li>
+        <li>Director: {{director}}</li>
+        <li>Writer(s): {{writer}}</li>
+    </ul>
 
-<h2>
-<ul style="list-style: none;">
-    Additional info:
-    <li>IMDB ID: {{imdbID}}</li>
-    <li>Director: {{director}}</li>
-    <li>Type: {{type}}</li>
-    <li>Language/s: {{language}}</li>
-    <li>Country: {{country}}</li>
-    <li>Awards: {{awards}}</li>
-    <li>Box Office: {{boxOffice}}</li>
-    <li>Website: {{website}}</li>
-
-</ul>
-    Writer(s): {{writer}}
-{{/results}}
+    {{/results}}
     {{#error}}
-{{error}}
-{{/error}}
-</h2>
+    {{error}}
+    {{/error}}
+</h3>
+
 </body>
 </html>
