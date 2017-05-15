@@ -1,43 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Cinema Explorer</title>
+    <link rel="stylesheet" type="text/css" href="format.css"/>
 </head>
 <body>
-    <h1>Cinema Explorer</h1>
+    <h1>Cinema Explorer</h1><br class="small"/>
     <form action="/search" method="get">
-        <center>Enter the Name of the Movie: </br><input type="text" name="keyword"></center></br>
-        <center><input type="submit" value="Submit"></center></br>
+        <p>Enter the name of a Movie:</p><br class="small"/>
+        <input type="text" name="keyword" maxlength="40" size="15"><br class="small"/>
+        <input type="submit" value="Submit"/><br class="small"/>
     </form>
+<h3>
+        {{#results}}
+    {{#title}} Title: {{title}} {{/title}}
+    {{#poster}}
+        <img style= src="{{poster}}" alt="{{poster}}" style="width:300;height:300;"/>
+    {{/poster}}
+    {{#plot}} Plot: {{plot}} {{/plot}}<br/>
+    {{#runtime}} Runtime: {{runtime}} minutes {{/runtime}}
+    {{#genre}} Genre:{{genre}}{{/genre}}
+    {{#rated}} Rating: {{rated}}
 
-{{#results}}
-{{title}}
-{{year}}
-{{rated}}
-{{released}}
-{{runtime}}
-{{genre}}
-{{director}}
-{{writer}}
-{{actors}}
-{{plot}}
-{{language}}
-{{country}}
-{{awards}}
-{{poster}}
-{{metaScore}}
-{{imdbRating}}
-{{imdbVotes}}
-{{imdbID}}
-{{type}}
-{{boxOffice}}
-{{production}}
-{{website}}
-{{/results}}
+    Reviews:
+    {{#metaScore}} Metascore: {{metaScore}} <details> blbl</details>{{/metaScore}}
 
-{{#error}}
+    {{#imdbRating}} IMDB rating: {{imdbRating}} {{/imdbRating}} <details> blbl</details>{{/metaScore}}
+    {{imdbVotes}} IMDB votes: {{imdbVotes}} {{imdbVotes}}<br class="small"/>
+
+    {{#released}}{{released}}{{/released}}
+
+
+    {{#director}}{{director}}{{/director}}
+    {{#writer}}{{writer}}{{/writer}}
+    {{#actors}}{{actors}}{{/actors}}
+    {{#language}}{{language}}{{/language}}
+    {{#country}} {{country}} {{/country}}
+    {{#awards}}{{awards}}{{/awards}}
+
+
+    {{imdbID}}
+    {{type}}
+    {{#boxOffice}}
+        BoxOffice : {{boxOffice}}
+    {{/boxOffice}}
+    {{production}}
+
+    {{website}}
+
+    {{/results}}
+
+    {{#error}}
     {{error}}
-{{/error}}
+    {{/error}}
+</h3>
+
 </body>
 </html>

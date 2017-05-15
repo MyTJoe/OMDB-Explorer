@@ -31,7 +31,7 @@ public class Client {
             }
 
             String title = getText(node, "Title");
-            String year = getText(node, "Year");
+            //String year = getText(node, "Year");
             String rated = getText(node, "Rated");
             String released = getText(node, "Released");
             String runtime = getText(node, "Runtime");
@@ -56,7 +56,7 @@ public class Client {
             Movie movieInfo = new Movie();
 
             movieInfo.setTitle(title);
-            movieInfo.setYear(year);
+            //movieInfo.setYear(year);
             movieInfo.setRated(rated);
             movieInfo.setReleased(released);
             movieInfo.setRuntime(runtime);
