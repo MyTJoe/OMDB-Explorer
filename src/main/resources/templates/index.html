@@ -2,65 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Coding Exercise</title>
+    <title>Cinema Explorer</title>
     <link rel="stylesheet" type="text/css" href="format.css"/>
 </head>
 <body>
-<h1>Coding Challenge</h1>
+<h1>Cinema Explorer</h1>
 <form action="/search" method="get">
-    <h2>Enter the Name of the Movie: <input type="text" name="keyword"><br>
-        <input type="submit" value="Submit"></h2><br>
+    <h2> Enter a movie title in the search box below.</h2><br>
+    <h2>Search: <input type="text" name="keyword"><br class="small"/>
+        <input type="submit" value="Submit" size="large"></h2><br class="small"/>
 </form>
 
-<table class = center cellspacing= "5">
+<table class = center cellspacing= "5" >
     {{#results}}
     <tr>
-        <h2><td>{{title}}</td></h2>
+        <td>{{title}}</td>
+        <td>{{Genre}}</td>
         <td>Released {{released}}</td>
         <td>Rated {{rated}}</td>
-        <td>Runtime: {{runtime}}</td>
-    </tr>
+        <td>{{runtime}}</td>
+        </tr>
     {{/results}}
 </table>
 {{#results}}
+<center><p>{{plot}}</p></center>
 {{#poster}}<img src="{{poster}}" alt="{{poster}}" style="width:300;height:300;"/>{{/poster}}<br>
-
-<h2>Plot: {{plot}}</h2>
-<h2>Staring: {{actors}}</h2><br>
+<h2>Staring: {{actors}}</h2><br class="small"/>
 <h2>Reviews</h2>
 <table class = center cellspacing= "5">
-    {{#results}}
+
     <tr>
         <td></td>
-        <td>Metascore: {{metaScore}}</td>
-        <td>IMDB Rating:{{imdbRating}}</td>
+        <td>Metascore Rating: {{metaScore}}</td>
+        <td>IMDB Rating: {{imdbRating}}</td>
         <td>IMDB Votes: {{imdbVotes}}</td>
     </tr>
-    {{/results}}
+
 </table>
 
-<br>
-<br>
+<h2>
+<ul style="list-style: none;">
+    Additional info:
+    <li>IMDB ID: {{imdbID}}</li>
+    <li>Director: {{director}}</li>
+    <li>Type: {{type}}</li>
+    <li>Language/s: {{language}}</li>
+    <li>Country: {{country}}</li>
+    <li>Awards: {{awards}}</li>
+    <li>Box Office: {{boxOffice}}</li>
+    <li>Website: {{website}}</li>
 
-Genre: {{genre}}<br>
-Director: {{director}}<br>
-Writer/s: {{writer}}<br>
-
-
-Additional info:
-Language/s: {{language}}<br>
-Country: {{country}}<br>
-Awards: {{awards}}<br>
-<br>
-IMDB ID: {{imdbID}}<br>
-Type: {{type}}<br>
-Box Office: {{boxOffice}}<br>
-Production: {{production}}<Br>
-Website: {{website}}<Br>
+</ul>
+    Writer(s): {{writer}}
 {{/results}}
-
-
-{{#error}}
+    {{#error}}
 {{error}}
 {{/error}}
 </h2>

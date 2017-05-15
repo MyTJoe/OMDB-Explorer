@@ -31,7 +31,7 @@ public class Client {
             }
 
             String title = getText(node, "Title");
-            //String year = getText(node, "Year");
+
             String rated = getText(node, "Rated");
             String released = getText(node, "Released");
             String runtime = getText(node, "Runtime");
@@ -55,12 +55,12 @@ public class Client {
 
             Movie movieInfo = new Movie();
 
-            movieInfo.setTitle(title);
-            //movieInfo.setYear(year);
-            movieInfo.setRated(rated);
-            movieInfo.setReleased(released);
+            movieInfo.setTitle(title + ", ");
+
+            movieInfo.setRated(rated + ", ");
+            movieInfo.setReleased(released + ", ");
             movieInfo.setRuntime(runtime);
-            movieInfo.setGenre(genre);
+            movieInfo.setGenre(genre + ", ");
             movieInfo.setDirector(director);
             movieInfo.setWriter(writer);
             movieInfo.setActors(actors);
@@ -70,7 +70,7 @@ public class Client {
             movieInfo.setCountry(country);
             movieInfo.setPoster(poster);
             movieInfo.setMetaScore(metaScore);
-            movieInfo.setImdbRating(imdbRating);
+            movieInfo.setImdbRating(imdbRating + ", ");
             movieInfo.setImdbVotes(imdbVotes);
             movieInfo.setImdbID(imdbID);
             movieInfo.setType(type);
