@@ -5,23 +5,26 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.omdbexplorer.explorer.data.Movie;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
 
-    private String url = "http://www.omdbapi.com/?t=";
+
 
     // Build url from user input
     // Return a list of Movie objects as strings
     public List<Movie> getData(String keyword) {
+        String url = "http://www.omdbapi.com/?t=" + keyword + "&apikey=" + System.getenv("API_KEY");
+
         List<Movie> results = new ArrayList<>();
         RestTemplate restTemplate = new RestTemplate();
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            String movie = restTemplate.getForObject(url+= URLEncoder.encode(keyword, "UTF-8"), String.class);
+            String movie = restTemplate.getForObject(url, String.class);
+
+//            String movie = restTemplate.getForObject(url+= URLEncoder.encode(keyword, "UTF-8"), String.class);
             JsonNode node = mapper.readTree(movie);
 
             // Return an empty list if there is an error with the search

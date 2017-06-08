@@ -27,7 +27,7 @@ public class ApplicationController {
         }
         List<Movie> results = new Client().getData(keyword);
         if (results.size() == 0) {
-            view.addObject("error", "Sorry  there were no results for: "
+            view.addObject("error", "Sorry there were no results for: "
                     + keyword + ", please try again.");
         } else{
             view.addObject("results", results);
